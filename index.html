@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crack Detection System - Demo</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI CRACK DETECTION</h1>
+            <p>Advanced Structural Integrity Analysis by Hendri</p>
+            <div class="demo-badge">LIVE DEMO</div>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div id="drop-area" class="drop-area">
+                    <div class="upload-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 16V8M12 8L9 11M12 8L15 11M3 15V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V15M17 10L12 5L7 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <p>Drag and drop your image here or</p>
+                    <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
+                    <label class="button" for="fileElem">Select File</label>
+                </div>
+
+                <div class="samples-container">
+                    <h3>Try Sample Images</h3>
+                    <div class="samples-grid">
+                        <div class="sample-item" onclick="useSample('static/images/positif.jpg', true)">
+                            <img src="static/images/positif.jpg" alt="Crack Sample">
+                            <span>Crack Detected</span>
+                        </div>
+                        <div class="sample-item" onclick="useSample('static/images/negatif.jpg', false)">
+                            <img src="static/images/negatif.jpg" alt="No Crack Sample">
+                            <span>No Crack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="result-section" class="result-section hidden">
+                <div class="loader-container" id="loader">
+                    <div class="scanner-line"></div>
+                    <div class="log-container" id="log-container">
+                        <p>> Initializing Neural Network...</p>
+                    </div>
+                </div>
+
+                <div id="result-display" class="result-display hidden">
+                    <div class="result-image-container">
+                        <img id="result-img" src="" alt="Detection result">
+                        <canvas id="detection-canvas"></canvas>
+                    </div>
+                    <div class="result-details">
+                        <div class="status-card" id="status-card">
+                            <h2 id="status-text">Detecting...</h2>
+                            <p id="count-text"></p>
+                        </div>
+                        <button class="button reset-btn" onclick="resetUI()">New Scan</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 AI Crack Detection. Created by Hendri.</p>
+        </footer>
+    </div>
+    <script src="static/js/main.js"></script>
+</body>
+</html>
